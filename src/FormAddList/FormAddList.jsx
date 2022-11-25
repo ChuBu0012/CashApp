@@ -75,8 +75,6 @@ const FormAddList = () => {
       if (result.isConfirmed) {
         DeleteItem(slug);
       }
-      getData();
-      navigate('/AddList')
     });
   };
 
@@ -84,7 +82,11 @@ const FormAddList = () => {
     axios
       .delete(`${import.meta.env.VITE_API}/delItem/${slug}`)
       .then((res) => {
-        res.json(res);
+        Swal.fire({
+          title: "ลบเรียบร้อย!",
+          icon: "success",
+        });
+        getData();
       })
       .catch((err) => {
         console.log(err);
@@ -154,7 +156,9 @@ const FormAddList = () => {
               >
                 <div className="flex justify-between items-center w-full">
                   <div className="flex flex-col justify-center items-start">
-                    <span className=" text-header md:text-2xl">{ele.nameItem}</span>
+                    <span className=" text-header md:text-2xl">
+                      {ele.nameItem}
+                    </span>
                     <span className=" text-slate-500">{formatdate}</span>
                     <button
                       onClick={() => ConfirmDel(ele.slug)}
@@ -169,7 +173,9 @@ const FormAddList = () => {
                       {ele.amount}
                     </span>
                     {ele.remain && (
-                      <p className=" text-sky-700 md:text-xl">ค.ล. {ele.remain}</p>
+                      <p className=" text-sky-700 md:text-xl">
+                        ค.ล. {ele.remain}
+                      </p>
                     )}
                   </div>
                 </div>
