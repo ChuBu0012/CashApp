@@ -74,7 +74,7 @@ const FormAddList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         DeleteItem(slug);
-        getData()
+        
       }
     });
   };
@@ -84,6 +84,7 @@ const FormAddList = () => {
       .delete(`${import.meta.env.VITE_API}/delItem/${slug}`)
       .then((res) => {
         res.json(res);
+        getData();
       })
       .catch((err) => {
         console.log(err);
