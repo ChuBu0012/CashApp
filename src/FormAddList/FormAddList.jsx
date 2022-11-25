@@ -76,6 +76,7 @@ const FormAddList = () => {
         DeleteItem(slug);
       }
       getData();
+      navigate('/AddList')
     });
   };
 
